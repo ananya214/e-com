@@ -187,33 +187,29 @@ body {
 
 /* Flip Card Section */
 .flip-card-section {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Default: 4 cards per row */
     gap: 20px;
     padding: 50px;
+    justify-content: center;
 }
-.head h2{
-   
-        text-align: center;
-        font-size: 2.5rem;
-        color: #561C24;
-    
 
-}
 /* Flip Card */
 .flip-card {
-    width: 250px;
+    width: 100%;
+    max-width: 250px; /* So that cards don’t get too big */
     height: 300px;
     perspective: 1000px;
+    margin: auto;
 }
 
+/* Flip Card Inner */
 .flip-card-inner {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s ease-in-out;
+    transition: transform 0.6s ease-in-out;
 }
 
 /* Front & Back */
@@ -222,16 +218,15 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     border-radius: 10px;
 }
 
 /* Front Side */
 .flip-card-front {
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .flip-card-front img {
@@ -249,13 +244,29 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     padding: 15px;
 }
 
-.price {
-    font-size: 18px;
-    font-weight: bold;
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: space-around;
     margin-top: 10px;
+}
+
+.button-container button {
+    padding: 8px 12px;
+    background-color: white;
+    color: #6D2932;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-container button:hover {
+    background-color: #ffebeb;
 }
 
 /* Flip Animation */
@@ -263,33 +274,42 @@ body {
     transform: rotateY(180deg);
 }
 
-/* Static Shop Button */
-.shop-btn-container {
-    text-align: center;
-    margin-top: 20px;
-}
+/* 🎯 Mobile View: 2 Cards per Row */
 
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #6D2932;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 18px;
-    transition: 0.3s;
-}
+   /* Existing desktop layout remains same - no change */
 
-.btn:hover {
-    background-color: #561C24;
-}
-
-/* Responsive Design */
+/* 🎯 Mobile View ONLY */
 @media (max-width: 768px) {
-    .flip-card-section {
-        flex-direction: column;
-        align-items: center;
+    .head{
+        text-align: center;
     }
+    .flip-card-section {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
+        gap: 12px;
+        padding: 20px;
+    }
+
+    .flip-card {
+        max-width: 180px; /* Slightly smaller card */
+        height: 250px;
+    }
+
+    .flip-card-back h2 {
+        font-size: 1rem;
+        text-align: center; /* Smaller heading */
+    }
+
+    .flip-card-back p {
+        font-size: 0.8rem; /* Smaller paragraph */
+    }
+
+    .button-container button {
+        font-size: 0.75rem; /* Smaller buttons */
+        padding: 6px 10px;
+    }
+}
+
+
 
     .hamburger {
         display: block;
@@ -313,7 +333,7 @@ body {
     .nav-links li {
         margin: 15px 0;
     }
-}
+
 /* Main Section */
 .main-section {
     background-color: #E8D8C4;
@@ -750,4 +770,8 @@ body {
     .footer-section.subscribe input {
       width: 80%;
     }
+  }
+  .head h2{
+    text-align: center;
+
   }
