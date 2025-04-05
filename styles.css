@@ -1,6 +1,21 @@
 /* Importing Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* Optional: Makes it fully invisible */
+}
 
+html, body {
+    overflow-y: scroll; 
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
 * {
     margin: 0;
     padding: 0;
@@ -63,6 +78,20 @@ body {
     font-size: 2rem;
     cursor: pointer;
 }
+
+
+    
+    /* Show nav-links when active */
+    .nav-links.active {
+        display: flex;
+    }
+    
+  
+    .logo {
+      font-size: 20px;
+      padding-bottom: 10px;
+    }
+  
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -160,6 +189,8 @@ body {
 }
 
 .image-container.left {
+    height: 21%;
+
     border-radius: 0 0 30px 0; /* Rounded only on the bottom-right */
 }
 
@@ -274,40 +305,99 @@ body {
     transform: rotateY(180deg);
 }
 
-/* 🎯 Mobile View: 2 Cards per Row */
-
-   /* Existing desktop layout remains same - no change */
-
-/* 🎯 Mobile View ONLY */
-@media (max-width: 768px) {
-    .head{
-        text-align: center;
-    }
+/* By default (desktop etc.) */
+.button-container button {
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  
+  
+  
+  
+  
+  
+  @media (max-width: 768px) {
     .flip-card-section {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
-        gap: 12px;
-        padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 cards side-by-side */
+      gap: 12px;
+      padding: 20px;
     }
-
+  
     .flip-card {
-        max-width: 180px; /* Slightly smaller card */
-        height: 250px;
+      max-width: 100%;
+      height: 250px;
     }
-
+  
     .flip-card-back h2 {
-        font-size: 1rem;
-        text-align: center; /* Smaller heading */
+      font-size: 1rem;
+      text-align: center;
     }
-
+  
     .flip-card-back p {
-        font-size: 0.8rem; /* Smaller paragraph */
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+  
+    .button-container button {
+      font-size: 0.65rem !important; /* Chhota font */
+      padding: 6px 10px;
+      min-width: 100px;
+      max-width: 45%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
     }
 
-    .button-container button {
-        font-size: 0.75rem; /* Smaller buttons */
-        padding: 6px 10px;
-    }
+    
+  }
+  @media (max-width: 768px) {
+  .main-content {
+    flex-direction: column; /* Stack everything vertically */
+    text-align: center;
+  }
+
+  .image-container {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .text-container {
+    padding: 10px 20px;
+  }
+
+  .text-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .text-container p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  .image-container img {
+    width: 120px; /* or try 100px for smaller, adjust as needed */
+    height: auto;
+    border-radius: 10px;
+  }
 }
+
+  
 
 
 
@@ -342,6 +432,155 @@ body {
     position: relative;
 }
 
+@media (max-width: 900px) {
+    .hero h1 {
+        font-size: 2rem; /* Smaller text */
+    }
+    .hero p {
+        font-size: 1rem; /* Smaller text */
+    }
+    .hero-content {
+        max-width: 400px; /* Reduced width */
+    }
+}
+
+/* For screens smaller than 600px (Mobile) */
+@media (max-width: 600px) {
+    .hero {
+        height: auto; /* Allow height to adjust based on content */
+        padding: 10px;
+    }
+    .hero h1 {
+        font-size: 1.8rem; /* Even smaller text */
+    }
+    .hero p {
+        font-size: 0.9rem; /* Smaller text */
+    }
+    .btn {
+        font-size: 1rem; /* Adjust button text size */
+        padding: 10px 20px; /* Adjust button padding */
+    }
+    .hero-content {
+        max-width: 100%; /* Full width on small screens */
+        padding: 15px; /* Padding adjustment */
+    }
+}
+
+
+@media (max-width: 480px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .navbar {
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px;
+        background: #752d2d;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Ensures navbar stays on top */
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: fixed; /* Keeps the menu fixed */
+        top: 50px; /* Below the navbar */
+        left: 0;
+        width: 100%;
+        background-color: #782c2c;
+        z-index: 999; /* Below the navbar */
+        max-height: 0; /* Initially hidden */
+        overflow: hidden; /* Hides overflow when not active */
+        transition: max-height 0.3s ease; /* Animation for opening */
+        padding: 0; /* Removes padding for clean look */
+        margin: 0; /* Removes margin for clean look */
+    }
+
+    
+
+    .nav-links li {
+        list-style: none;
+        width: 100%;
+        text-align: center;
+        padding: 12px 0; /* Spacing for links */
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        color: white; /* Ensures readability */
+        font-size: 16px; /* Controls font size */
+        display: block; /* Makes the entire area clickable */
+        width: 100%;
+    }
+
+    /* Optional: Adding hover effects */
+    .nav-links li a:hover {
+        background-color: #6c2424; /* Darkens on hover */
+    }
+
+    /* Hide nav links by default */
+    .nav-links {
+        display: none; /* Updated: Do not show nav links by default */
+    }
+
+    /* Show nav links when active */
+    .nav-links.active {
+        display: flex; /* Updated: Change display to flex when active */
+    }
+}
+  
+  
+  
+
+@media (max-width: 480px) {
+    .hero img {
+        max-width: 100%; /* Ensures the image doesn't exceed the container's width */
+        height: auto; /* Keep aspect ratio intact */
+    }
+
+    .hero h1 {
+        font-size: 1.8rem; /* Adjust font size for small screens */
+    }
+
+    .hero p {
+        font-size: 1rem; /* Adjust font size for small screens */
+    }
+
+    .hero-content {
+        max-width: 100%; /* Full width for the content */
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .btn {
+        font-size: 1rem; /* Adjust button font size */
+        padding: 10px 20px; /* Adjust button padding */
+    }
+}
+
+/* Styling for left and right rounded corners of images */
+.image-container.left {
+    border-radius: 0 0 30px 0; /* Rounded only on the bottom-right */
+}
+
+.image-container.right {
+    border-radius: 30px 0 0 0; /* Rounded only on the top-left */
+}
 /* Wavy Divider (Top & Bottom) */
 .main-section::before,
 .main-section::after {
@@ -567,41 +806,52 @@ body {
         padding: 8px 18px;
     }
 }
-
 @media (max-width: 768px) {
     /* Show Hamburger Icon */
     .hamburger {
         display: block;
-        font-size: 30px;
-        color: white;
+        font-size: 20px;
+        padding: 20px;
+        color: white; /* Ensure the text color is visible */
+    }
+
+    .navbar {
+        padding: 0; 
+        box-sizing: border-box;  /* Set padding to 0 for navbar */
     }
 
     /* Hide Navigation Links initially */
     .nav-links {
-        display: none;
-        flex-direction: column;
+        line-height: 1;
+        margin: 0;
+        display: none; /* Initially hide nav links */
+        flex-direction: column; /* Stack links vertically */
         position: absolute;
-        top: 60px; /* Adjust if necessary */
+        top: 60px; /* Adjust according to your design */
         right: 0;
-        background: #6D2932;
-        width: 100%;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        background: #6D2932; /* Background color for nav links */
+        width: 100%; /* Full width of the container */
+        padding: 0; /* Remove padding */
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Shadow effect */
     }
 
-    /* Display Navigation Links when Active */
+    /* Active Navigation Links */
     .nav-links.active {
-        display: flex;
+        display: flex; /* Show links when active */
     }
 
     .nav-links li {
-        margin: 15px 0;
-        text-align: center;
+        margin: 0;           /* Remove default margin */
+        padding: 15px 0;    /* Add padding for spacing */
+        text-align: center;  /* Center align text */
     }
 
     .nav-links li a {
-        font-size: 20px;
+        font-size: 15px;     /* Font size for links */
+        line-height: 1;      /* Control line height */
+        color: white;        /* Set link color for visibility */
+        text-decoration: none; /* Remove underline from links */
     }
 }
 .footer {
